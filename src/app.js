@@ -7,9 +7,15 @@ import petsRouter from './routes/pets.router.js';
 import adoptionsRouter from './routes/adoption.router.js';
 import sessionsRouter from './routes/sessions.router.js';
 
+import { swaggerSpecs } from './config/docConfig.js';
+import swaggerUI from "swagger-ui-express"
+
 const app = express();
 const PORT = process.env.PORT||8080;
-const connection = mongoose.connect(`URL DE MONGO`)
+const connection = mongoose.connect(`mongodb+srv://fabricioAdmin:12345@coderbackend39700.sarerxd.mongodb.net/petShop?retryWrites=true&w=majority`)
+
+
+
 
 app.use(express.json());
 app.use(cookieParser());
@@ -18,5 +24,7 @@ app.use('/api/users',usersRouter);
 app.use('/api/pets',petsRouter);
 app.use('/api/adoptions',adoptionsRouter);
 app.use('/api/sessions',sessionsRouter);
+//endpoint donde se podra ver la documentacion
+app.use("/api/docs", swaggerUI.serve,swaggerUI.setup(swaggerSpecs));
 
 app.listen(PORT,()=>console.log(`Listening on ${PORT}`))
