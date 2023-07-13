@@ -1,0 +1,41 @@
+paths:
+  /api/users/:  
+    get: 
+      summary: Obtener todos los usuarios
+      tags: 
+        - Usuarios
+      responses: 
+        "200":
+          description: todos los usuarios fueron obtenidos correctamente 
+        "401":
+          description: error por faltas del permisos
+        "500":
+          description: error interno del servidor  
+
+components: 
+  schemas:
+    Users:
+      type: objetc
+      propieties:
+        _id:
+        type: ObjectId
+        description: id del usuario autogenerado
+        first_name:
+          type: string
+          description: nombre del usuario
+        last_name:
+          type: string
+          description: apellido del usuario
+        email:
+          type: string
+          description: correo del usuario
+        password:
+          type: string
+          description: contraseña del usuario
+    example: 
+      _id: ObjectId(`5as4a5s4a5s4as45as45a`)
+      firs_name: pepe
+      last_name: suarez
+      email: pepe@gmail.com
+      password: 6s4a6s4a6s4as6as$                          
+            
